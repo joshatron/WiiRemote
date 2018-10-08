@@ -1,8 +1,9 @@
 import cwiid 
 import time
+from pyautogui import press
 # Connecting to the Wiimote.
 # Tries multiple times
-print 'Press 1+2 on your Wiimote now...' 
+print("Press 1+2 on your Wiimote now...")
 wm = None 
 i=2 
 while not wm: 
@@ -12,8 +13,8 @@ while not wm:
     if (i>10): 
       quit() 
       break 
-    print "Error opening wiimote connection" 
-    print "attempt " + str(i) 
+    print("Error opening wiimote connection")
+    print("attempt " + str(i))
     i +=1 
 
 # Set Wiimote to report button presses and accelerometer state 
@@ -26,8 +27,10 @@ while True:
     buttons = wm.state["buttons"]
     if(buttons & cwiid.BTN_A):
         print("Button a pressed")
+        press(' ')
     if(buttons & cwiid.BTN_B):
         print("Button b pressed")
+        press('esc')
     if(buttons & cwiid.BTN_1):
         print("Button 1 pressed")
     if(buttons & cwiid.BTN_2):
@@ -40,11 +43,15 @@ while True:
         print("Button home pressed")
     if(buttons & cwiid.BTN_LEFT):
         print("Button left pressed")
+        press('left')
     if(buttons & cwiid.BTN_RIGHT):
         print("Button right pressed")
+        press('right')
     if(buttons & cwiid.BTN_UP):
         print("Button up pressed")
+        press('up')
     if(buttons & cwiid.BTN_DOWN):
         print("Button down pressed")
+        press('down')
     if(buttons != 0):
         time.sleep(.2)

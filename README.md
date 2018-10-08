@@ -10,6 +10,7 @@ You need to have cwiid installed.
 On ubuntu, install with:
 
     sudo apt install python-cwiid
+    sudo apt install python-xlib
 
 You will also need pyautogui, installed with pip:
 
