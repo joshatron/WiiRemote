@@ -1,6 +1,6 @@
 import cwiid 
 import time
-from pyautogui import press
+from remote.StateExecutor import StateExecutor
 # Connecting to the Wiimote.
 # Tries multiple times
 print("Press 1+2 on your Wiimote now...")
@@ -23,35 +23,42 @@ wm.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_ACC
 # Turn on led to show connected 
 wm.led = 1
 
+executor = StateExecutor()
+
 while True:
     buttons = wm.state["buttons"]
     if(buttons & cwiid.BTN_A):
         print("Button a pressed")
-        press(' ')
+        executor.buttonAPress()
     if(buttons & cwiid.BTN_B):
         print("Button b pressed")
-        press('esc')
+        executor.buttonBPress()
     if(buttons & cwiid.BTN_1):
         print("Button 1 pressed")
+        executor.button1Press()
     if(buttons & cwiid.BTN_2):
         print("Button 2 pressed")
+        executor.button2Press()
     if(buttons & cwiid.BTN_MINUS):
         print("Button minus pressed")
+        executor.buttonMinusPress()
     if(buttons & cwiid.BTN_PLUS):
         print("Button plus pressed")
+        executor.buttonPlusPress()
     if(buttons & cwiid.BTN_HOME):
         print("Button home pressed")
+        executor.buttonHomePress()
     if(buttons & cwiid.BTN_LEFT):
         print("Button left pressed")
-        press('left')
+        executor.buttonLeftPress()
     if(buttons & cwiid.BTN_RIGHT):
         print("Button right pressed")
-        press('right')
+        executor.buttonRightPress()
     if(buttons & cwiid.BTN_UP):
         print("Button up pressed")
-        press('up')
+        executor.buttonUpPress()
     if(buttons & cwiid.BTN_DOWN):
         print("Button down pressed")
-        press('down')
+        executor.buttonDownPress()
     if(buttons != 0):
         time.sleep(.2)
