@@ -5,17 +5,17 @@ from remote.StateExecutor import StateExecutor
 # Tries multiple times
 print("Press 1+2 on your Wiimote now...")
 wm = None 
-i=2 
+i = 2
 while not wm: 
   try: 
-    wm=cwiid.Wiimote() 
+    wm = cwiid.Wiimote()
   except RuntimeError: 
-    if (i>10): 
+    if (i > 10):
       quit() 
       break 
     print("Error opening wiimote connection")
     print("attempt " + str(i))
-    i +=1 
+    i += 1
 
 # Set Wiimote to report button presses and accelerometer state 
 wm.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_ACC 
